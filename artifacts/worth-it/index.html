@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Worth It? — Make it make sense.</title>
+    <meta name="description" content="A private purchase decision calculator. Compare a possible purchase with your income, expenses, savings, and how often you'll use it.">
+    <meta name="theme-color" content="#101a2b">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='19' fill='%23101a2b' stroke='%23b9e5c7'/%3E%3Ctext x='20' y='28' text-anchor='middle' font-family='Georgia' font-style='italic' font-size='25' fill='%23b9e5c7'%3EW%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#calculator">Skip to calculator</a>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Worth It home"><span class="brand-mark" aria-hidden="true">W</span><span>worth it<span class="brand-dot">?</span></span></a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#calculator">Calculator</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#about">About</a>
+      </nav>
+      <a class="nav-cta" href="#calculator">Make a decision <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main id="top">
+      <section class="hero wrap" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> A little clarity before checkout</p>
+          <h1 id="hero-title">Is it actually<br><span>worth your money?</span></h1>
+          <p class="hero-tagline">Before you buy, make it make sense.</p>
+          <p class="hero-description">Compare a purchase with your budget, the work hours behind it, how often you expect to use it, and what matters most to you.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#calculator">Calculate My Purchase <span aria-hidden="true">↓</span></a>
+            <p class="hero-note">No account. No judgment. Just your numbers.</p>
+          </div>
+        </div>
+        <aside class="hero-aside" aria-label="A quick example">
+          <span class="aside-label">A quick thought</span>
+          <span class="aside-quote">“How many times will I really use it?”</span>
+          <span class="aside-rule"></span>
+          <span class="aside-caption">A $240 purchase used 40 times is $6 per use. A higher price can make sense if it fits your budget and gets regular use.</span>
+          <span class="aside-index">01 <span>/ 03</span></span>
+        </aside>
+        <div class="hero-orbit" aria-hidden="true"><div class="orbit-inner"></div><span class="orbit-center">?</span><span class="orbit-label orbit-label-one">PRICE</span><span class="orbit-label orbit-label-two">PURPOSE</span><span class="orbit-label orbit-label-three">PEACE</span></div>
+        <div class="hero-bottomline"><span>PERSONAL FINANCE, WITHOUT THE PRESSURE</span><span>01 — PAUSE</span></div>
+      </section>
+
+      <section class="calculator-section" id="calculator" aria-labelledby="calculator-title">
+        <div class="wrap">
+          <div class="section-heading">
+            <div><p class="eyebrow"><span class="eyebrow-line"></span> Your call, with context</p><h2 id="calculator-title">Put the purchase<br><em>in perspective.</em></h2></div>
+            <p class="section-intro">A few honest estimates are all you need. Your entries stay right here in this browser.</p>
+          </div>
+          <div class="calculator-layout">
+            <form id="purchase-form" class="form-card" novalidate>
+              <div class="form-topline"><span>THE CALCULATOR</span><span>02 / INPUTS</span></div>
+              <div id="form-errors" class="form-errors" role="alert" aria-live="assertive" hidden></div>
+              <div class="form-section">
+                <div class="form-section-title"><span class="section-number">01</span><div><h3>The item</h3><p>What are you thinking of buying?</p></div></div>
+                <div class="field-grid">
+                  <div class="field full"><label for="item-name">Item name <span class="optional">Optional</span></label><input id="item-name" name="itemName" type="text" placeholder="e.g. noise-cancelling headphones" autocomplete="off" maxlength="80"></div>
+                  <div class="field"><label for="price">Price</label><div class="input-with-select"><input id="price" name="price" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="0.00" required aria-describedby="price-error"><select id="currency" name="currency" aria-label="Currency"><option value="CAD" selected>CAD</option><option value="USD">USD</option><option value="GBP">GBP</option><option value="EUR">EUR</option></select></div><small class="field-hint">Use the same currency for all amounts. No conversion is done.</small><small class="field-error" id="price-error"></small></div>
+                  <div class="field"><label for="category">Category</label><select id="category" name="category"><option>Technology</option><option>Gaming</option><option>Clothing</option><option>Entertainment</option><option>Education</option><option>Home</option><option>Other</option></select></div>
+                </div>
+              </div>
+              <div class="form-section">
+                <div class="form-section-title"><span class="section-number">02</span><div><h3>Your monthly picture</h3><p>Use take-home numbers, not gross.</p></div></div>
+                <div class="field-grid">
+                  <div class="field"><label for="income">Take-home income <span class="unit">/ month</span></label><input id="income" name="income" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="4,200" required></div>
+                  <div class="field"><label for="expenses">Essential expenses <span class="unit">/ month</span></label><input id="expenses" name="expenses" type="number" min="0" step="0.01" inputmode="decimal" placeholder="2,600" required><small class="field-hint">If these exceed your income, the difference counts as a monthly shortfall.</small></div>
+                  <div class="field"><label for="savings">Current savings</label><input id="savings" name="savings" type="number" min="0" step="0.01" inputmode="decimal" placeholder="8,000" required></div>
+                  <div class="field"><label for="reserve">Protected savings minimum</label><input id="reserve" name="reserve" type="number" min="0" step="0.01" inputmode="decimal" placeholder="5,000" required><small class="field-hint">The amount you want to keep untouched, even if it is above your current savings.</small></div>
+                  <div class="field full"><label for="hourly">Take-home pay <span class="unit">/ hour</span> <span class="optional">Optional</span></label><div class="prefix-input"><span id="hourly-currency" aria-hidden="true">CAD</span><input id="hourly" name="hourly" type="number" min="0" step="0.01" inputmode="decimal" placeholder="If you know it"></div><small class="field-hint">In the selected currency. Used to estimate work hours.</small></div>
+                </div>
+              </div>
+              <div class="form-section">
+                <div class="form-section-title"><span class="section-number">03</span><div><h3>The real-life bit</h3><p>Best guess beats perfect guess.</p></div></div>
+                <div class="field-grid">
+                  <div class="field"><label for="uses">Expected uses <span class="unit">/ month</span></label><input id="uses" name="uses" type="number" min="0.1" step="0.1" inputmode="decimal" placeholder="8" required></div>
+                  <div class="field"><label for="months">How long you'll use it <span class="unit">/ months</span></label><input id="months" name="months" type="number" min="1" step="1" inputmode="numeric" placeholder="24" required></div>
+                  <fieldset class="field full urgency-field"><legend>How urgent does it feel?</legend><div class="urgency-options">
+                    <label class="choice"><input type="radio" name="urgency" value="need" checked><span><strong>Need it now</strong><small>It solves a real need</small></span></label>
+                    <label class="choice"><input type="radio" name="urgency" value="wait"><span><strong>Can wait a week</strong><small>Worth a little pause</small></span></label>
+                    <label class="choice"><input type="radio" name="urgency" value="want"><span><strong>Just want it</strong><small>That's valid, too</small></span></label>
+                  </div></fieldset>
+                </div>
+              </div>
+              <div class="form-actions">
+                <button class="button button-primary calculate-button" type="submit">Calculate my result <span aria-hidden="true">↗</span></button>
+                <button class="button button-quiet" id="example-button" type="button">Try an example</button>
+                <button class="text-button" id="reset-button" type="button">Reset</button>
+              </div>
+              <p class="form-footnote"><span class="lock-icon" aria-hidden="true">◆</span> Your numbers never leave this device.</p>
+            </form>
+
+            <aside class="result-column">
+              <section class="result-card" id="result-card" aria-labelledby="result-heading" aria-live="polite">
+                <div class="result-topline"><span>YOUR READOUT</span><span id="result-status">AWAITING INPUT</span></div>
+                <div id="result-empty" class="result-empty">
+                  <div class="empty-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+                  <p class="empty-kicker">A moment to think</p><h3>Your answer<br>starts with a number.</h3>
+                  <p>Fill in what you know, then let the calculator add a little perspective.</p>
+                  <div class="empty-prompt"><span>01</span><span>Start with the price</span><span aria-hidden="true">↙</span></div>
+                </div>
+                <div id="result-content" hidden>
+                  <div class="verdict-row"><div><p class="result-kicker">THE QUICK TAKE</p><h3 id="verdict-title"></h3><p id="verdict-description" class="verdict-description"></p></div><div class="score-ring" id="score-ring" aria-label="Score"><span id="score-number">0</span><small>/100</small></div></div>
+                  <div id="warning-box" class="warning-box" hidden></div>
+                  <div class="metrics-grid">
+                    <div class="metric"><span>Cost per use</span><strong id="metric-use"></strong><small id="metric-total"></small></div>
+                    <div class="metric"><span>Price / income</span><strong id="metric-income"></strong><small>of one month take-home</small></div>
+                    <div class="metric"><span>Work time</span><strong id="metric-hours"></strong><small id="metric-hours-note"></small></div>
+                    <div class="metric"><span>Available after purchase</span><strong id="metric-funds"></strong><small id="metric-surplus"></small></div>
+                  </div>
+                  <div class="score-breakdown"><div class="breakdown-heading"><span>HOW THE SCORE ADDS UP</span><span>ESTIMATE, NOT SCIENCE</span></div>
+                    <div class="score-row"><span>Affordability <small>40%</small></span><div class="bar-track"><span id="bar-affordability"></span></div><strong id="score-affordability"></strong></div>
+                    <div class="score-row"><span>Cost per use <small>25%</small></span><div class="bar-track"><span id="bar-cost"></span></div><strong id="score-cost"></strong></div>
+                    <div class="score-row"><span>Monthly frequency <small>15%</small></span><div class="bar-track"><span id="bar-frequency"></span></div><strong id="score-frequency"></strong></div>
+                    <div class="score-row"><span>Urgency <small>20%</small></span><div class="bar-track"><span id="bar-urgency"></span></div><strong id="score-urgency"></strong></div>
+                  </div>
+                  <div class="suggestions"><p class="result-kicker">A FEW THINGS TO CONSIDER</p><ul id="suggestion-list"></ul></div>
+                  <div class="result-actions"><button class="button button-primary" id="recalculate-button" type="button">Recalculate</button><button class="button button-outline" id="save-button" type="button">Save this result</button></div>
+                  <div class="share-actions"><button id="copy-button" type="button">Copy my results</button><button id="share-button" type="button">Share result</button></div>
+                </div>
+              </section>
+              <section class="saved-card" aria-labelledby="saved-title">
+                <div class="saved-head"><div><p class="result-kicker">KEEP IT FOR LATER</p><h3 id="saved-title">Saved calculations</h3></div><span class="saved-count" id="saved-count">0</span></div>
+                <div id="saved-list" class="saved-list"><p class="saved-empty">Nothing saved yet. Save a result when you want to come back to it.</p></div>
+              </section>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="how-section wrap" id="how-it-works" aria-labelledby="how-title">
+        <div class="how-intro"><p class="eyebrow"><span class="eyebrow-line"></span> The thinking behind it</p><h2 id="how-title">A number isn't<br><em>the whole story.</em></h2><p>This isn't a verdict from on high. It's a way to line up the trade-offs so you can make a choice that feels like yours.</p></div>
+        <div class="how-steps">
+          <article class="how-step"><span class="step-num">01</span><div><h3>Start with what fits</h3><p>We look at the purchase against your take-home income, monthly breathing room, and the savings you want to protect.</p></div><span class="step-mark" aria-hidden="true">↘</span></article>
+          <article class="how-step"><span class="step-num">02</span><div><h3>Make use count</h3><p>Estimated uses over the item's lifetime turn one sticker price into a more useful cost-per-use number.</p></div><span class="step-mark" aria-hidden="true">↘</span></article>
+          <article class="how-step"><span class="step-num">03</span><div><h3>Leave room to choose</h3><p>Urgency adds context, not a command. The score is a transparent, non-scientific nudge—not a substitute for your judgment.</p></div><span class="step-mark" aria-hidden="true">↘</span></article>
+        </div>
+      </section>
+
+      <section class="pause-section" aria-labelledby="pause-title"><div class="wrap pause-inner"><div class="pause-symbol" aria-hidden="true"><span></span><span></span></div><div><p class="eyebrow">A tiny pause can change a lot</p><h2 id="pause-title">If it can wait,<br><em>let it wait.</em></h2><p>Give it seven days. If you still want it—and the numbers still feel right—you'll be buying with intention, not impulse.</p></div><div class="pause-days"><span>7</span><small>DAY<br>RULE</small></div></div></section>
+
+      <section class="about-section wrap" id="about" aria-labelledby="about-title">
+        <div class="about-head"><p class="eyebrow"><span class="eyebrow-line"></span> Straight answers</p><h2 id="about-title">A few things<br><em>worth knowing.</em></h2></div>
+        <div class="faq-list">
+          <details><summary>What does cost per use mean?<span aria-hidden="true">+</span></summary><p>It divides the item's price by how many times you expect to use it over its lifetime. For example, a $240 item used 40 times costs about $6 per use. It is a comparison aid, not a promise about future use.</p></details>
+          <details><summary>How should I read the score?<span aria-hidden="true">+</span></summary><p>The 0–100 score is an explicitly non-scientific estimate: affordability (40%), cost per use (25%), monthly frequency (15%), and urgency (20%). A result of 75–100 is “Looks Worth It,” 45–74 is “Think It Over,” and 0–44 is “Probably Skip It.” Each component is shown so you can see what moved the number. Affordability scores 100, 75, 50, 25, or 0 as available money covers 100%, 75%, 50%, 25%, or less of the price. Cost-per-use scores are 100 up to 2 currency units, 80 up to 5, 60 up to 10, 35 up to 25, and 10 above that. Monthly use scores are 100 at 12+ uses, 80 at 6+, 60 at 3+, 40 at 1+, and 20 below 1. Urgency scores 100 for “Need it now,” 75 for “Can wait a week,” and 45 for “Just want it.”</p></details>
+          <details><summary>What does “potentially unaffordable” mean?<span aria-hidden="true">+</span></summary><p>We flag it when projected savings after the purchase and one month of net cash flow would fall below your protected minimum. A monthly shortfall reduces the projection. For the affordability score, available money is savings above the reserve plus one month of net cash flow, but never less than zero. The flag is separate from the score and deserves a closer look.</p></details>
+      <details><summary>Does the calculator give financial advice?<span aria-hidden="true">+</span></summary><p>No. It makes simple estimates from only the numbers you enter. It does not know your full financial situation, future costs, taxes, or priorities. Treat it as a reflection tool, not financial advice.</p></details>
+          <details><summary>Does my information leave my browser?<span aria-hidden="true">+</span></summary><p>No. Calculations happen on this device. If you choose to save a result, it is stored in this browser's local storage. Clear your browser storage to remove saved calculations.</p></details>
+          <details><summary>Can I compare prices in different currencies?<span aria-hidden="true">+</span></summary><p>You can choose CAD, USD, GBP, or EUR for a calculation. No exchange conversion happens, so use the same currency for your purchase and money inputs.</p></details>
+        </div>
+      </section>
+      <section class="closing wrap"><p class="eyebrow">The decision is yours</p><h2>Make room for<br><em>the things that matter.</em></h2><a class="button button-primary" href="#calculator">Back to the calculator <span aria-hidden="true">↑</span></a></section>
+    </main>
+    <footer class="site-footer"><div class="wrap footer-inner"><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">W</span><span>worth it<span class="brand-dot">?</span></span></a><p>An independent educational tool for a more considered purchase.</p><span>PRIVATE BY DESIGN · NO DATA LEAVES YOUR BROWSER · NOT FINANCIAL ADVICE</span></div></footer>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>

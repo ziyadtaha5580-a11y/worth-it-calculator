@@ -1,0 +1,139 @@
+Build a complete, polished, responsive website called **Worth It?** — a free purchase decision calculator that helps people decide whether an item is worth buying before spending their money.
+
+IMPORTANT: Build the actual working website, not just a design mockup. I am a beginner, so keep the code simple, readable, and easy to edit.
+
+## 1. TECHNOLOGY
+- Use HTML, CSS, and vanilla JavaScript.
+- Do not use React, TypeScript, a backend, a database, paid APIs, or an AI API.
+- The website must work entirely in the browser.
+- Organize the project into index.html, style.css, and script.js.
+- Use localStorage only for optional saved calculations and preferences.
+- Do not require API keys or paid services.
+
+## 2. DESIGN AND BRAND
+Create a premium-looking, modern financial-tech design.
+
+Brand name: Worth It?
+Tagline: "Before you buy, make it make sense."
+
+Design style:
+- Clean, minimal, premium interface.
+- Dark navy background with white text, subtle green accents, and muted grey secondary text.
+- Attractive cards, rounded corners, subtle shadows, and smooth hover effects.
+- Use a modern sans-serif font.
+- Add a clear visual hierarchy and generous spacing.
+- Use simple icons where appropriate.
+- Make it look like a real startup product, not a school project.
+- Fully responsive on mobile, tablet, and desktop.
+- Ensure strong contrast and keyboard accessibility.
+- Respect reduced-motion preferences.
+
+## 3. HOMEPAGE
+At the top, include:
+- A simple text logo: "Worth It?"
+- Navigation links: Calculator, How It Works, About.
+- A prominent hero heading: "Is it actually worth your money?"
+- Supporting text explaining that users can evaluate a purchase using their budget, work hours, expected use, and personal priorities.
+- A primary button labelled "Calculate My Purchase" that scrolls to the calculator.
+- A small example showing that an expensive item is not necessarily a bad purchase if it is affordable and used frequently.
+
+## 4. PURCHASE CALCULATOR
+Build a fully working interactive calculator with these inputs:
+
+A. Item name (optional text field).
+B. Item price in the user's selected currency.
+C. Currency selector with CAD, USD, GBP, and EUR. Default to CAD. Do not perform live exchange-rate conversions.
+D. Monthly take-home income.
+E. Monthly essential expenses.
+F. Current savings.
+G. Desired minimum savings to keep untouched.
+H. Hourly take-home pay, optional.
+I. Expected number of times the user will use the item per month.
+J. Estimated number of months the user will own the item.
+K. Purchase urgency: "Need it now", "Can wait a week", or "Just want it".
+L. Purchase category: Gaming, Technology, Clothing, Entertainment, Education, Home, or Other.
+
+Add helpful explanations beside inputs where necessary. Validate all numerical inputs and show understandable error messages. Prevent division by zero and invalid negative values.
+
+## 5. RESULTS AND SCORING
+When the user clicks "Calculate", calculate the following in JavaScript:
+
+- Price as a percentage of monthly take-home income.
+- Remaining monthly money after essential expenses.
+- Money remaining after the purchase, based on available savings above the user's minimum savings reserve and their monthly remaining money.
+- Estimated hours of work required, if hourly pay was entered.
+- Estimated cost per use over the expected ownership period.
+- Whether the purchase is affordable based on the entered numbers.
+- A transparent decision score from 0 to 100.
+
+Build an explainable scoring system using these factors:
+- Affordability: 40% of the score.
+- Expected cost per use: 25%.
+- Frequency of use: 15%.
+- Purchase urgency: 20%.
+
+Document the scoring rules in the code. Do not pretend the score is scientifically validated.
+
+Use three result categories:
+- 75–100: "Looks Worth It"
+- 45–74: "Think It Over"
+- 0–44: "Probably Skip It"
+
+These categories must not override the affordability check. If the purchase would put the user below their savings reserve and they cannot cover the difference with monthly surplus, clearly flag it as potentially unaffordable even if the score is high.
+
+Show:
+- Large decision score.
+- Result category and a short explanation.
+- A breakdown of the four score components.
+- Price as a percentage of monthly income.
+- Estimated hours of work.
+- Cost per use.
+- Available funds after the purchase.
+- Three personalized, rule-based suggestions such as waiting seven days, choosing a cheaper alternative, or saving for another month.
+
+Clearly state that the result is an estimate based on user inputs, not financial advice. Do not claim the tool knows the user's actual finances.
+
+## 6. INTERACTIVE FEATURES
+- Update results only when the user submits the calculator, or when a clearly labelled recalculation action is triggered.
+- Include a "Try an example" button that fills the calculator with realistic sample data.
+- Include a "Reset" button.
+- Include a "Save this result" button that saves the calculation locally in the browser.
+- Include a "Copy my results" button that copies a readable text summary to the clipboard.
+- Include a "Share result" button using the browser's native sharing feature when available, with a clipboard fallback.
+- Include a saved calculations section with the ability to reopen or delete individual saved results.
+- Provide sensible feedback when saving, copying, or sharing succeeds or fails.
+- Never send financial inputs to an external server.
+
+## 7. EDUCATIONAL CONTENT
+Below the calculator, add:
+- "How it works" with three simple steps.
+- "What does cost per use mean?" with a clear example.
+- "The 7-day rule": explain why waiting before buying a nonessential item may reduce impulse purchases.
+- "Frequently asked questions" covering privacy, score accuracy, and how affordability is estimated.
+- A short footer stating that the website is an independent educational tool.
+
+Do not invent testimonials, user counts, reviews, financial certifications, or claims that the website has helped thousands of people.
+
+## 8. TECHNICAL REQUIREMENTS
+- All calculator math must be real JavaScript, not hardcoded example results.
+- Format numbers and currencies correctly.
+- Use semantic HTML, labels, accessible controls, and useful error messages.
+- Avoid unnecessary libraries and external dependencies.
+- Do not include fake buttons or unfinished placeholder features.
+- Handle missing values and unusual inputs safely.
+- Include a meaningful page title, meta description, and favicon if possible.
+- Add comments explaining important functions so a beginner can understand the code.
+- Make sure all navigation links, buttons, calculator fields, saved results, and responsive layouts work.
+- Test the main calculator scenarios and fix errors before finishing.
+
+## 9. FINAL CHECK
+Before finishing, test:
+1. A low-priced purchase.
+2. An expensive purchase with low income.
+3. A purchase that would reduce savings below the minimum reserve.
+4. Missing or invalid inputs.
+5. Zero expected uses.
+6. Saving, reopening, deleting, copying, and sharing a result.
+7. Mobile screen layout.
+
+Build the complete website now. When done, explain which files contain the HTML, CSS, and JavaScript, how to edit them, and how to publish the site. Keep the application free to run and do not add paid integrations.
