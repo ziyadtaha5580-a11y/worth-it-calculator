@@ -1,0 +1,79 @@
+name: Publish Worth It to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v6
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 10.26.1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24.13.0
+          cache: pnpm
+
+      - name: Install the website's dependencies
+        run: pnpm install --frozen-lockfile --filter "@workspace/worth-it..."
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Set the build path for this repository
+        shell: bash
+        run: |
+          repository_name="${GITHUB_REPOSITORY#*/}"
+          owner_name="${GITHUB_REPOSITORY%%/*}"
+
+          if [[ "${repository_name,,}" == "${owner_name,,}.github.io" ]]; then
+            base_path="/"
+          else
+            base_path="/${repository_name}/"
+          fi
+
+          echo "BASE_PATH=${base_path}" >> "$GITHUB_ENV"
+          echo "PORT=21884" >> "$GITHUB_ENV"
+
+      - name: Build the website
+        run: pnpm --filter @workspace/worth-it run build
+
+      - name: Upload the built website
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: artifacts/worth-it/dist/public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
